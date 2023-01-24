@@ -1,0 +1,61 @@
+{
+    "name": "apply_team",
+    "description": "チーム情報登録・更新を行うコマンド",
+    "describe": {
+        "teamname": "チーム名を入力してください。この登録名はリーグ戦の際に実際に呼称される名前となります。更新時に何も変更しない場合は、半角数字で0と入力してください",
+        "apptype": "チーム情報オプションを選択してください。既にリーダーとして登録済みのチームがあると登録は出来ません",
+        "leagueid": "出場するリーグを選択してください。更新時に何も変更しない場合は、【変更なし】を選択してください",
+        "leaderid": "チームに登録するリーダーを指定してください",
+        "member1id": "チームに登録するメンバー①を指定してください",
+        "member2id": "チームに登録するメンバー②を指定してください",
+        "member3id": "チームに登録するメンバー③を指定してください",
+        "member4id": "チームに登録するメンバー④を指定してください"
+    },
+    "choices": {
+        "apptype": [
+            {
+                "name": "登録",
+                "value": 0
+            },
+            {
+                "name": "更新",
+                "value": 1
+            }
+        ],
+        "leagueid": [
+            {
+                "name": "変更なし",
+                "value": 0
+            },
+            {
+                "name": "AVG21",
+                "value": 1
+            },
+            {
+                "name": "AVG22",
+                "value": 2
+            },
+            {
+                "name": "AVG23",
+                "value": 3
+            },
+            {
+                "name": "AVG24",
+                "value": 4
+            }
+        ]
+    },
+    "dataindex":{
+        "PK": 0,
+        "teamname": 1,
+        "seasonid": 2,
+        "leagueid": 3,
+        "leaderid": 4,
+        "member1id": 5,
+        "member2id": 6,
+        "member3id": 7,
+        "member4id": 8,
+        "registration_date": 9,
+        "update_date": 10
+    }
+}
