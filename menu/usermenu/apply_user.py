@@ -90,7 +90,7 @@ class ApplyUser(commands.Cog):
                 cfc = check_friendcode(friendcode)
                 #[ERROR] 指定のフレンドコード入力規則に合致しない場合
                 if cfc != True: 
-                    error = "入力されたフレンドコードが指定の入力規則に合致しませんでした。ハイフン無し・半角数字12桁でフレンドコードを入力してください"
+                    error = "入力されたフレンドコードが指定の入力規則に合致しませんでした。ハイフンを含めて半角数字12桁でフレンドコードを入力してください"
                     await interaction.followup.send(content=author.mention, embed=self.custembed.error(error))
                     return
                 else:
