@@ -11,7 +11,7 @@ from discord import app_commands
 from cmmod.json_module import open_json
 import cmmod.discord_module
 from usermenu.cmfunc.usermenufunc import get_currenttime
-from usermenu.cmfunc.userfunc import check_userdata, check_friendcode, check_twitterid, convert_friendcode, apply_userdata
+from usermenu.cmfunc.userfunc import check_userdata, check_friendcode, check_twitterid, apply_userdata
 
 #app_commandsで使うデータ
 cmddata = open_json(r'menu/usermenu/data/apply_user.json')
