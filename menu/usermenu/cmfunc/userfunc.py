@@ -2,7 +2,7 @@ import os
 import sys
 
 #モジュール探索パス追加
-p = ['../','../../']
+p = ['../','../../','../../../']
 for e in p: sys.path.append(os.path.join(os.path.dirname(__file__),e))
 
 import discord
@@ -18,24 +18,24 @@ def check_userdata(user:discord.User) -> list:
     else: return ud
 
 #入力されたフレンドコードの確認
-def check_friendcode(friendcode:int) -> bool:
+def old_check_friendcode(friendcode:int) -> bool:
     d = 12 #受付桁数
     if friendcode < 0 or len(str(friendcode)) != d: return False
     else: return True
 
-#入力されたフレンドコード(int)から指定の文字列形式に変換
-def convert_friendcode(friendcode:int) -> str:
-    l = re.split('(....)',str(friendcode))[1::2]
-    converted = '-'.join(l)
-    return converted
+#入力されたフレンドコードの確認
+def check_friendcode(friendcode:str) -> bool:
+    r = re.search(r"\d{4}-\d{4}-\d{4}",friendcode)
+    return bool(r)
 
 #入力されたTwitterIDの確認
 def check_twitterid(twitterid:str) -> bool:
     r = re.search("@[0-9a-zA-Z_]{1,15}",twitterid)
-    if twitterid != r.group(): return False
-    else: return True
+    return bool(r)
 
 #ユーザ情報送信
 def apply_userdata(author:discord.User, user:discord.User, apptype:int, userdata:dict) -> requests.Response:
     r = database.Database().post_db(name='apply', data=userdata, tablename='indiv-master', apptype=apptype, authorname=str(author), authorid=str(author.id), subjectid=str(user.id))
     return r
+
+print(check_twitterid("1111-2222-3333"))

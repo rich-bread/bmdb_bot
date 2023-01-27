@@ -33,7 +33,7 @@ class ApplyUser(commands.Cog):
     @app_commands.describe(user=cmddesb["user"],name=cmddesb["name"],friendcode=cmddesb["friendcode"],twitterid=cmddesb["twitterid"],position=cmddesb["position"],
     buki=cmddesb["buki"],splatzone_xp=cmddesb["splatzone_xp"],allmode_xp=cmddesb["allmode_xp"],image1=cmddesb["image1"],image2=cmddesb["image2"])
     @app_commands.choices(position=cmdcho_pos,buki=cmdcho_buki)
-    async def apply_user_command(self, interaction:discord.Interaction, user:discord.User, name:str, friendcode:int, twitterid:str, 
+    async def apply_user_command(self, interaction:discord.Interaction, user:discord.User, name:str, friendcode:str, twitterid:str, 
     position:app_commands.Choice[int], buki:app_commands.Choice[int], splatzone_xp:int, allmode_xp:int, 
     image1:discord.Attachment=None, image2:discord.Attachment=None) -> None:
         await interaction.response.defer(thinking=True)
@@ -85,7 +85,7 @@ class ApplyUser(commands.Cog):
             else: NAME = name
 
             #【フレンドコード確定処理】
-            if friendcode == NCP: FRIENDCODE = userdata[cmddix["friendcode"]]
+            if friendcode == str(NCP): FRIENDCODE = userdata[cmddix["friendcode"]]
             else:
                 cfc = check_friendcode(friendcode)
                 #[ERROR] 指定のフレンドコード入力規則に合致しない場合
@@ -94,7 +94,7 @@ class ApplyUser(commands.Cog):
                     await interaction.followup.send(content=author.mention, embed=self.custembed.error(error))
                     return
                 else:
-                    FRIENDCODE = convert_friendcode(friendcode)
+                    FRIENDCODE = friendcode
 
             #【TwitterID確定処理】
             if twitterid == str(NCP): TWITTERID = userdata[cmddix["twitterid"]]
