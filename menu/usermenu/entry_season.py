@@ -40,20 +40,20 @@ class EntrySeason(commands.Cog):
                 return
             
             #【ユーザ情報確認処理】
-            teamcmddata = open_json(r'menu/usermenu/data/apply_team.json') #チーム情報申請時に使用するapp_commands用JSON
-            teamddix = teamcmddata["dataindex"] #ユーザ情報のindex
-            usercmddata = open_json(r'menu/usermenu/data/apply_user.json') #ユーザ情報申請時に使用するapp_commands用JSON
-            userddix = usercmddata["dataindex"] #ユーザ情報のindex
-            members = [teamdata[teamddix["leaderid"]],teamdata[teamddix["member1id"]],teamdata[teamddix["member2id"]],teamdata[teamddix["member3id"]],teamdata[teamddix["member4id"]]]
-            for mid in members:
-                if mid != None:
-                    member = await self.client.fetch_user(int(mid))
-                    userdata = check_userdata(member)
+            #teamcmddata = open_json(r'menu/usermenu/data/apply_team.json') #チーム情報申請時に使用するapp_commands用JSON
+            #teamddix = teamcmddata["dataindex"] #ユーザ情報のindex
+            #usercmddata = open_json(r'menu/usermenu/data/apply_user.json') #ユーザ情報申請時に使用するapp_commands用JSON
+            #userddix = usercmddata["dataindex"] #ユーザ情報のindex
+            #members = [teamdata[teamddix["leaderid"]],teamdata[teamddix["member1id"]],teamdata[teamddix["member2id"]],teamdata[teamddix["member3id"]],teamdata[teamddix["member4id"]]]
+            #for mid in members:
+                #if mid != None:
+                    #member = await self.client.fetch_user(int(mid))
+                    #userdata = check_userdata(member)
                     #[ERROR] 指定ユーザの情報にウデマエ画像がない場合        
-                    if userdata[userddix["image1"]] == '':
-                        error = f"指定ユーザ{member.mention}のウデマエ画像が登録されていません。ウデマエ確認機能追加の為、ウデマエ画像を提出する必要があります"
-                        await interaction.followup.send(content=author.mention, embed=self.custembed.error(error))
-                        return
+                    #if userdata[userddix["image1"]] == '':
+                        #error = f"指定ユーザ{member.mention}のウデマエ画像が登録されていません。ウデマエ確認機能追加の為、ウデマエ画像を提出する必要があります"
+                        #await interaction.followup.send(content=author.mention, embed=self.custembed.error(error))
+                        #return
 
             #【シーズン情報確認処理】
             seasondata = check_season() #-> [継続新規判別値,[シーズン情報]]
