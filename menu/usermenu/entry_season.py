@@ -47,11 +47,11 @@ class EntrySeason(commands.Cog):
             members = [teamdata[teamddix["leaderid"]],teamdata[teamddix["member1id"]],teamdata[teamddix["member2id"]],teamdata[teamddix["member3id"]],teamdata[teamddix["member4id"]]]
             for mid in members:
                 if mid != None:
-                    member = await self.client.fetch_user(mid)
+                    member = await self.client.fetch_user(int(mid))
                     userdata = check_userdata(member)
                     #[ERROR] 指定ユーザの情報にウデマエ画像がない場合        
                     if userdata[userddix["image1"]] == '':
-                        error = f"指定ユーザ{member.mention}のウデマエ画像が登録されていません。ウデマエ確認機能追加の為、ウデマエ画像を提出する必要があります。再度ユーザ情報更新で画像を"
+                        error = f"指定ユーザ{member.mention}のウデマエ画像が登録されていません。ウデマエ確認機能追加の為、ウデマエ画像を提出する必要があります"
                         await interaction.followup.send(content=author.mention, embed=self.custembed.error(error))
                         return
 
