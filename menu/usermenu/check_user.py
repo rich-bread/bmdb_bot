@@ -50,7 +50,7 @@ class CheckUser(commands.Cog):
 
                 teamcmddata = open_json(r'menu/usermenu/data/apply_team.json') #チーム情報申請時に使用するapp_commands用JSON
                 teamcmddix = teamcmddata["dataindex"] #チーム情報のindex
-                matchids = [teamdata[i] for i in list(range(teamcmddix["member1"], teamcmddix["member4"]+1)) if teamdata[i] == str(user.id)] #チームに所属するメンバーのDiscordIDと比較/該当IDをリストに追加
+                matchids = [teamdata[i] for i in list(range(teamcmddix["member1id"], teamcmddix["member4id"]+1)) if teamdata[i] == str(user.id)] #チームに所属するメンバーのDiscordIDと比較/該当IDをリストに追加
                 #[ERROR] 指定ユーザがリーダーのチームに所属していない場合
                 if len(matchids) != 1:
                     error = f"指定ユーザ{user.mention}はリーダー{author.mention}のチームに所属していません。本人以外のユーザ情報を閲覧する場合は指定ユーザが所属するチームのリーダーである必要があります"
