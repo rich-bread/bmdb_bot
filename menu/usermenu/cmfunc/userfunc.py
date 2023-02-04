@@ -19,7 +19,7 @@ def check_userdata(user:discord.User) -> list:
 
 #入力されたフレンドコードの確認
 def check_friendcode(friendcode:str) -> bool:
-    r = re.search(r"\d{4}-\d{4}-\d{4}",friendcode)
+    r = re.search(r"^\d{4}-\d{4}-\d{4}$",friendcode)
     return bool(r)
 
 #入力されたTwitterIDの確認
