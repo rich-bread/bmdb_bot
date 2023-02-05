@@ -30,7 +30,16 @@ def get_teamxps(author:discord.User) -> list:
 
 #チームの平均XP計算
 def cal_averagexp(xps:list) -> int:
-    f = 50
-    xpsr = [int(xp/f)*f for xp in xps]
-    xpavg = int(sum(xpsr)/len(xpsr))
+    f = 50 #切り捨て値
+    xpld = sorted(xps, reverse=True) #XP降順リスト
+    xpsr = [int(xp/f)*f for xp in xpld[:4]] #該当XPを指定規格に変換
+    xpavg = int(sum(xpsr)/len(xpsr)) #平均XP算出
     return xpavg
+
+##NEW##
+#チーム情報の取得
+def get_teamdata(authorid:str) -> list:
+    r = database.Database().get_db(name='read', tablename='team-master', columnname='リーダーID', subjectrecord=str(authorid))
+    td = r.json()
+    if td == False: return list()
+    else: return td

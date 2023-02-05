@@ -24,10 +24,18 @@ def check_friendcode(friendcode:str) -> bool:
 
 #入力されたTwitterIDの確認
 def check_twitterid(twitterid:str) -> bool:
-    r = re.search("@[0-9a-zA-Z_]{1,15}",twitterid)
+    r = re.search("^@[0-9a-zA-Z_]{1,15}$",twitterid)
     return bool(r)
 
 #ユーザ情報送信
 def apply_userdata(author:discord.User, user:discord.User, apptype:int, userdata:dict) -> requests.Response:
     r = database.Database().post_db(name='apply', data=userdata, tablename='indiv-master', apptype=apptype, authorname=str(author), authorid=str(author.id), subjectid=str(user.id))
     return r
+
+##NEW##
+#指定ユーザのデータ取得
+def get_userdata(userid:str) -> list:
+    r = database.Database().get_db(name='read', tablename='indiv-master', columnname='DiscordID', subjectrecord=str(userid))
+    ud = r.json()
+    if ud == False: return list()
+    else: return ud
