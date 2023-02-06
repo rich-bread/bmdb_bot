@@ -25,6 +25,7 @@ class WithdrawSeason(commands.Cog):
         self.custembed = cmmod.discord_module.CustomEmbed()
 
     @app_commands.command(name=cmdname, description=cmddesp)
+    @app_commands.guild_only()
     async def abstain_season_command(self, interaction:discord.Interaction):
         await interaction.response.defer(thinking=True)
         

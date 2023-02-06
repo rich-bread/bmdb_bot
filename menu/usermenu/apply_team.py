@@ -33,6 +33,7 @@ class ApplyTeam(commands.Cog):
     @app_commands.describe(apptype=cmddesb["apptype"],teamname=cmddesb["teamname"],league=cmddesb["leagueid"],
     leader=cmddesb["leaderid"],member1=cmddesb["member1id"],member2=cmddesb["member2id"],member3=cmddesb["member3id"],member4=cmddesb["member4id"])
     @app_commands.choices(apptype=cmdcho_apt,league=cmdcho_lgid)
+    @app_commands.guild_only()
     async def apply_team_command(self, interaction:discord.Interaction, apptype:app_commands.Choice[int], teamname:str, league:app_commands.Choice[int],
     leader:discord.User, member1:discord.User, member2:discord.User, member3:discord.User, member4:discord.User=None) -> None:
         try:

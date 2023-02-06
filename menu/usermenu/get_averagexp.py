@@ -24,6 +24,7 @@ class AverageXP(commands.Cog):
     
     #Slash: チームの平均XPを確認するコマンド(リーダーのみ)
     @app_commands.command(name=cmdname,description=cmddesp)
+    @app_commands.guild_only()
     async def get_averagexp_command(self, interaction:discord.Interaction) -> None:
         try:
             await interaction.response.defer(ephemeral=True,thinking=True)

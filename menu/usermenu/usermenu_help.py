@@ -22,6 +22,7 @@ class UserMenu_Help(commands.Cog):
         self.custembed = cmmod.discord_module.CustomEmbed()
 
     @app_commands.command(name=cmdname, description=cmddesp)
+    @app_commands.guild_only()
     async def usermenu_help(self, interaction:discord.Interaction) -> None:
         await interaction.response.defer(thinking=True)
 

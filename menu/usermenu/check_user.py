@@ -26,6 +26,7 @@ class CheckUser(commands.Cog):
 
     @app_commands.command(name=cmdname,description=cmddesp)
     @app_commands.describe(user=cmddesb["user"])
+    @app_commands.guild_only()
     async def check_user_command(self, interaction:discord.Interaction, user:discord.User):
         try:
             await interaction.response.defer(ephemeral=True,thinking=True)

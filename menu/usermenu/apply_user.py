@@ -33,6 +33,7 @@ class ApplyUser(commands.Cog):
     @app_commands.describe(user=cmddesb["user"],name=cmddesb["name"],friendcode=cmddesb["friendcode"],twitterid=cmddesb["twitterid"],position=cmddesb["position"],
     buki=cmddesb["buki"],splatzone_xp=cmddesb["splatzone_xp"],allmode_xp=cmddesb["allmode_xp"],image1=cmddesb["image1"],image2=cmddesb["image2"])
     @app_commands.choices(position=cmdcho_pos,buki=cmdcho_buki)
+    @app_commands.guild_only()
     async def apply_user_command(self, interaction:discord.Interaction, user:discord.User, name:str, friendcode:str, twitterid:str, 
     position:app_commands.Choice[int], buki:app_commands.Choice[int], splatzone_xp:int, allmode_xp:int, 
     image1:discord.Attachment=None, image2:discord.Attachment=None) -> None:

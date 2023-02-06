@@ -26,6 +26,7 @@ class EntrySeason(commands.Cog):
         self.custembed = cmmod.discord_module.CustomEmbed()
 
     @app_commands.command(name=cmdname, description=cmddesp)
+    @app_commands.guild_only()
     async def entry_season_command(self, interaction:discord.Interaction):
         try:
             await interaction.response.defer(thinking=True)
