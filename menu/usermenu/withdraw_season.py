@@ -35,7 +35,7 @@ class WithdrawSeason(commands.Cog):
             await interaction.response.defer(thinking=True)
 
             #【チーム情報確認処理】
-            raw_teamdata = self.teamdbfunc.get_teamdata(leaderid=author.id)
+            raw_teamdata = await self.teamdbfunc.get_teamdata(leaderid=author.id)
             teamdata = raw_teamdata[0]
             #[ERROR] コマンド実行者がリーダーのチームの情報が存在しない場合
             if not teamdata:
@@ -49,7 +49,7 @@ class WithdrawSeason(commands.Cog):
                 return
 
             #【シーズン情報確認処理】
-            seasondata = self.entrydbfunc.get_seasondata() #シーズン情報
+            seasondata = await self.entrydbfunc.get_seasondata() #シーズン情報
             #[ERROR] 受付中のシーズンが存在しない場合
             if not seasondata:
                 error = "現在受付期間中のシーズンがありません。受付期間を過ぎてから棄権申請を行う場合は、運営へお問い合わせください"
@@ -62,7 +62,7 @@ class WithdrawSeason(commands.Cog):
                             "シーズン名":seasondata[1]+"【棄権】", "シーズンID":"BML3WDS", "チーム名":teamdata[1]}
 
             #【POST処理】
-            self.entrydbfunc.log_entrydata(entrydata)
+            await self.entrydbfunc.log_entrydata(entrydata)
 
         except Exception as e:
             error = "コマンド実行中に予期せぬエラーが発生しました。このエラーが発生した場合は運営まで連絡をお願いします。\nエラー内容:"

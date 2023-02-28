@@ -39,7 +39,7 @@ class UpdateXP(commands.Cog):
             await interaction.response.defer(thinking=True)
             
             #【ユーザ情報確認処理】
-            raw_userdata = self.userdbfunc.get_userdata(userid=user.id)
+            raw_userdata = await self.userdbfunc.get_userdata(userid=user.id)
             userdata = raw_userdata[0]
             #[ERROR] ユーザ情報がDBに存在しない場合
             if not userdata:
@@ -80,8 +80,8 @@ class UpdateXP(commands.Cog):
                         "登録日時":userdata[userddix["registration_date"]], "最終更新日時":currenttime}
             
             #【POST処理】
-            self.userdbfunc.post_userdata(userid=user.id, postdata=postdata, apptype=apptype) #ユーザ情報送信
-            self.userdbfunc.log_userdata(author=author, postdata=postdata, currenttime=currenttime, apptype=apptype) #ログ送信
+            await self.userdbfunc.post_userdata(userid=user.id, postdata=postdata, apptype=apptype) #ユーザ情報送信
+            await self.userdbfunc.log_userdata(author=author, postdata=postdata, currenttime=currenttime, apptype=apptype) #ログ送信
 
         except UserMenuError as e:
             await interaction.followup.send(content=author.mention, embed=self.custembed.error(description=str(e)))
