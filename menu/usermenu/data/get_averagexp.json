@@ -1,7 +1,0 @@
-{
-    "name": "get_averagexp",
-    "description": "コマンド実行者がリーダーとして登録されているチームの平均XPを確認するコマンド ※チーム情報登録済み且つチームリーダーのみが実行できます",
-    "describe": {},
-    "choices": {},
-    "dataindex":{}
-}

@@ -1,19 +1,15 @@
 {
     "name": "entry_season",
-    "description": "シーズンへの参加申請を行うコマンド ※チーム情報登録済み且つチームリーダーのみが実行できます",
+    "description": "シーズンへの参加申請を行うコマンド ※情報登録済チーム且つチームリーダーのみ実行可",
     "describe": {},
     "choices": {},
     "dataindex":{
-        "entryparam": 0,
-        "seasondata": 1,
         "PK": 0,
         "seasonname": 1,
         "seasonid": 2,
-        "continue_from": 3,
-        "continue_until": 4,
-        "new_from": 5,
-        "new_until": 6,
-        "league_from": 7,
-        "league_until": 8
+        "entry_from": 3,
+        "entry_until": 4,
+        "league_from": 5,
+        "league_until": 6
     }
 }

@@ -1,7 +1,4 @@
 {
     "name": "withdraw_season",
-    "description": "シーズンへの棄権申請を行うコマンド ※チーム情報登録済み且つチームリーダーのみが実行できます",
-    "describe": {},
-    "choices": {},
-    "dataindex":{}
+    "description": "シーズンへの棄権申請を行うコマンド ※チーム情報登録済み且つチームリーダーのみが実行できます"
 }

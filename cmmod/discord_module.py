@@ -1,7 +1,7 @@
 import discord
 
 class CustomEmbed():
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
     #通常

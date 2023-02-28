@@ -8,8 +8,8 @@ import platform
 class Client(commands.Bot):
     def __init__(self):
         super().__init__(command_prefix=commands.when_mentioned, intents=discord.Intents().all())
-        self.cogslist = ['menu.usermenu.apply_user','menu.usermenu.apply_team','menu.usermenu.entry_season',
-        'menu.usermenu.check_user','menu.usermenu.check_team','menu.usermenu.get_averagexp','menu.usermenu.withdraw_season', 'menu.usermenu.usermenu_help']
+        self.cogslist = ['menu.usermenu.apply_user','menu.usermenu.update_xp','menu.usermenu.apply_team','menu.usermenu.entry_season', 'menu.usermenu.withdraw_season',
+        'menu.usermenu.check_user','menu.usermenu.check_team']
 
     async def setup_hook(self):
         if self.cogslist:
