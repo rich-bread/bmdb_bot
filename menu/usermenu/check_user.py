@@ -36,7 +36,7 @@ class CheckUser(commands.Cog):
             await interaction.response.defer(ephemeral=True,thinking=True)
             
             #【ユーザ情報確認処理】
-            raw_userdata = self.userdbfunc.get_userdata(userid=user.id)
+            raw_userdata = await self.userdbfunc.get_userdata(userid=user.id)
             userdata = raw_userdata[0]
             #[ERROR] 指定ユーザの情報が存在しない場合
             if not userdata:
