@@ -10,7 +10,8 @@ from discord.ext import commands
 from discord import app_commands
 from cmmod.json_module import open_json
 from cmmod.discord_module import CustomEmbed
-from usermenu.cmfunc.teamfunc import TeamDBFunc
+from usermenu.cmfunc.userfunc import UserDBFunc
+from usermenu.cmfunc.teamfunc import TeamFunc, TeamDBFunc
 
 #app_commandsで使うデータ
 cmddata = open_json(r'menu/usermenu/data/check_team.json')
@@ -20,6 +21,8 @@ cmddesp = cmddata["description"]
 class CheckTeam(commands.Cog):
     def __init__(self, client):
         self.client = client
+        self.userdbfunc = UserDBFunc()
+        self.teamfunc = TeamFunc()
         self.teamdbfunc = TeamDBFunc()
         self.custembed = CustomEmbed()
 
@@ -40,12 +43,26 @@ class CheckTeam(commands.Cog):
                 await interaction.followup.send(content=author.mention, embed=self.custembed.error(error))
                 return
 
-            #【閲覧用ユーザ情報作成処理】
+            
+            
+
+            #【平均XP計算処理】
             teamcmddata = open_json(r'menu/usermenu/data/apply_team.json') #ユーザ情報申請時に使用するapp_commands用JSON
             teamcmddix = teamcmddata["dataindex"] #チーム情報のindex
 
+            members = [teamdata[teamcmddix["leader"]],teamdata[teamcmddix["member1"]],teamdata[teamcmddix["member2"]],teamdata[teamcmddix["member3"]],teamdata[teamcmddix["member4"]]]
+            xps = []
+            for mid in members:
+                raw_userdata = await self.userdbfunc.get_userdata(userid=mid)
+                userdata = raw_userdata[0]
+                if not userdata: continue
+                xps.append(userdata[9])
+            xpavg = self.teamfunc.cal_averagexp(xps=xps)
+            
+            #【閲覧用ユーザ情報作成処理】
             viewdata = f"チーム名: {teamdata[teamcmddix['teamname']]}\n"+\
                         f"リーグ: {teamdata[teamcmddix['league']]}\n"+\
+                        f"平均XP: {xpavg}\n"+\
                         f"リーダー: <@{teamdata[teamcmddix['leader']]}>\n"+\
                         f"メンバー①: <@{teamdata[teamcmddix['member1']]}>\n"+\
                         f"メンバー②: <@{teamdata[teamcmddix['member2']]}>\n"+\

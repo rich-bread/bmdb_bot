@@ -22,12 +22,18 @@ class TeamFunc():
     def __init__(self) -> None:
         pass
     
-    #チームの平均XP計算
-    def cal_averagexp(self, xps:list) -> int:
+    #(旧)チームの平均XP計算
+    def old_cal_averagexp(self, xps:list) -> int:
         f = 50 #切り捨て値
         xpld = sorted(xps, reverse=True) #XP降順リスト
         xpsr = [int(xp/f)*f for xp in xpld[:4]] #該当XP(=XP上位4名)を指定規格に変換
         xpavg = int(sum(xpsr)/len(xpsr)) #平均XP算出
+        return xpavg
+    
+    #チームの平均XP計算
+    def cal_averagexp(self, xps:list) -> int:
+        xpld = sorted(xps, reverse=True) #XP降順リスト
+        xpavg = int(sum(xpld[:4])/len(xpld[:4])) #平均XP算出
         return xpavg
     
     #チームメンバーのXPリスト作成
