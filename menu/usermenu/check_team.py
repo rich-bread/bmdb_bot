@@ -53,9 +53,9 @@ class CheckTeam(commands.Cog):
             if teamdata[teamcmddix['member4']] != '': viewdata+"\nメンバー④: <@"+teamdata[teamcmddix['member4']]+">"
 
         except Exception as e:
-            error = "ユーザ情報確認コマンド実行中に予期せぬエラーが発生しました。このエラーが発生した場合は運営まで連絡をお願いします。\nエラー内容:"
-            print(error+e)
-            await interaction.followup.send(content=author.mention, embed=self.custembed.error(error+e))
+            error = "コマンド実行中に予期せぬエラーが発生しました。このエラーが発生した場合は運営まで連絡をお願いします。\nエラー内容:"+str(e)
+            print(error)
+            await interaction.followup.send(content=author.mention, embed=self.custembed.error(error))
 
         else:
             #【完了送信処理】
