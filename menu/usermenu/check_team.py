@@ -43,9 +43,6 @@ class CheckTeam(commands.Cog):
                 await interaction.followup.send(content=author.mention, embed=self.custembed.error(error))
                 return
 
-            
-            
-
             #【平均XP計算処理】
             teamcmddata = open_json(r'menu/usermenu/data/apply_team.json') #ユーザ情報申請時に使用するapp_commands用JSON
             teamcmddix = teamcmddata["dataindex"] #チーム情報のindex

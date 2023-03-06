@@ -96,7 +96,7 @@ class ApplyUser(commands.Cog):
                 cti = self.userfunc.check_twitterid(twitterid)
                 #[ERROR] 正しいTwitterIDの入力がされなかった場合
                 if cti != True: 
-                    error = "入力されたTwitterIDが指定の入力規則に合致しませんでした。。半角英数字15桁(@なし)でTwitterIDを入力してください"
+                    error = "入力されたTwitterIDが指定の入力規則に合致しませんでした。半角英数字15桁(@なし)でTwitterIDを入力してください"
                     raise UserMenuError(error)
                 else: TWITTERID = "@"+twitterid
             #【ポジション確定】
