@@ -38,6 +38,10 @@
             {
                 "name": "AVG24",
                 "value": 4
+            },
+            {
+                "name": "AVG25",
+                "value": 5
             }
         ]
     },
